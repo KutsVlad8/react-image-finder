@@ -1,16 +1,7 @@
-import { Head, Navigation, NavigationItem } from './Header.styled';
+import { Head } from './Header.styled';
 
 const Header = () => {
-  return (
-    <Head>
-      <Navigation>
-        <div>
-          <NavigationItem to="/">Home</NavigationItem>
-          <NavigationItem to="/About">About</NavigationItem>
-        </div>
-      </Navigation>
-    </Head>
-  );
+  return <Head></Head>;
 };
 
 export default Header;
