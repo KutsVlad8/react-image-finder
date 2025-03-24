@@ -16,3 +16,19 @@ export const Text = styled.p`
   margin: 0;
   text-align: center;
 `;
+
+export const PlaceholderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+`;
+
+export const Icon = styled.div`
+  font-size: 50px;
+  margin-bottom: 10px;
+`;
