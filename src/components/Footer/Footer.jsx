@@ -3,7 +3,7 @@ import { FooTer, Text } from './Footer.styled';
 const Footer = () => {
   return (
     <FooTer>
-      <Text>Copyright © 2023. Created by Vladyslav Kutsevych.</Text>
+      <Text>Copyright © 2025. Created by Vladyslav Kutsevych.</Text>
     </FooTer>
   );
 };

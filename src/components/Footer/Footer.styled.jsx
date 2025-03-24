@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 export const FooTer = styled.footer`
   bottom: 0;
   left: 0;
-  width: 100%;
   background-color: #3f51b5;
   color: #fff;
   text-align: center;

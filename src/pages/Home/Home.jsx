@@ -1,17 +1,22 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
+// === API ===
 import getImages from '../../api/getImages';
 
+// === Components ===
 import Searchbar from '../../components/Searchbar/Searchbar';
 import ImageGallery from '../../components/ImageGallery/ImageGallery';
 import LoadMore from '../../components/Button/Button';
 import Modal from '../../components/Modal/Modal';
-import { quantum } from 'ldrs';
 
+// === Librares ===
+import { quantum } from 'ldrs';
+import { ImSearch } from 'react-icons/im';
 import Notiflix from 'notiflix';
 
-import { TextContainer, Text } from './Home.styled';
+// === Styles ===
+import { TextContainer, Text, PlaceholderContainer } from './Home.styled';
 
 const Home = () => {
   const [query, setQuery] = useState('');
@@ -81,24 +86,32 @@ const Home = () => {
     <>
       <Searchbar onSubmit={handleSubmitForm} />
 
-      {totalHits === 0 && (
-        <TextContainer>
+      {!query ? (
+        <PlaceholderContainer>
+          <ImSearch size={50} style={{ margin: '10px' }} />
+          <Text>Введите запрос в поиск, чтобы загрузить изображения</Text>
+        </PlaceholderContainer>
+      ) : loading ? (
+        <PlaceholderContainer>
+          <list-loader size="130" speed="1.8" color="#3f51b5" />
+        </PlaceholderContainer>
+      ) : totalHits === 0 ? (
+        <PlaceholderContainer>
           <Text>По вашему запросу {query} ни чего не найдено</Text>
-        </TextContainer>
+        </PlaceholderContainer>
+      ) : (
+        <>
+          <ImageGallery images={images} onClick={openModal} />
+          {totalHits / images.length > page && (
+            <LoadMore onClick={handleLoadMore} />
+          )}
+        </>
       )}
 
       {error && (
         <TextContainer>
           <Text>{error}</Text>
         </TextContainer>
-      )}
-
-      {images && <ImageGallery images={images} onClick={openModal} />}
-
-      {loading && <list-loader size="130" speed="1.8" color="#3f51b5" />}
-
-      {totalHits / images.length > page && (
-        <LoadMore onClick={handleLoadMore} />
       )}
 
       {showModal && (
