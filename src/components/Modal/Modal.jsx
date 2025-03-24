@@ -4,8 +4,10 @@ import { Overlay, ModalContent } from './Modal.styled';
 const Modal = ({ children, onClose }) => {
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'auto';
     };
   });
 
